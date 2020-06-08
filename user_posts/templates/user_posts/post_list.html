@@ -1,0 +1,23 @@
+{% extends 'user_posts/base.html' %}
+
+{% block content %}
+
+{% for posts in posts %}
+<div class="row mx-auto align-middle">
+
+    <div class="card mt-5" style="width: 30rem;">
+        <img class="card-img-top" src="{{ posts.images.url }}" alt="{{ posts.user.username }}">
+        <div class="card-body">
+            <div class="card-title">
+                <b class="pr-4">Like</b>
+                <b  class="pr-4">Comment</b>
+                <b  class="pr-4">Message</b><br>
+            </div>
+            <p class="card-text"><strong><a href="{% url 'user-detail' posts.user.id %}">{{ posts.user.username }}</a></strong>{{ posts.text }}</p><br>
+            <p class="card-text">{{ posts.date_posted }}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock content %}
