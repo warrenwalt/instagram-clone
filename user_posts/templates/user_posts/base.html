@@ -16,7 +16,7 @@
 
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <a href="#" class="navbar-brand ml-5">
+        <a href="{% url 'home' %}" class="navbar-brand ml-5">
            <!-- <img src="{% static 'user_posts\instagramLogo.PNG' %}" width="30" height="30" alt="LOGO">  -->
             instagram
         </a>
@@ -33,7 +33,11 @@
         </div>
 
         <div class="dropdown mr-5">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {% if user.is_authenticated %}
+                    {{ user.username }}
+                {% endif %}
+            </a>
             <div class="dropdown-menu">
                 <a href="#" class="dropdown-item">LogOut</a>
                 <a href="#" class="dropdown-item">Profile</a>

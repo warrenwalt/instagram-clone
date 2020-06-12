@@ -18,9 +18,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from user import views as user_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('user_posts.urls')),
+    path('profile/<str:username>/', user_views.profile, name="profile"),
 ]
 
 

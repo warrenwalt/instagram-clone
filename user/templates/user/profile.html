@@ -1,0 +1,36 @@
+{% extends 'user_posts/base.html' %}
+
+{% block content %}
+
+<div class="container px-5 py-5">
+    <div class="row">
+        <div class="col-sm-3 pr-5">
+            <img class="pb-5 img-fluid rounded-circle w-sm-40" src="{{ profile.prof_pic.url }}" alt="{{ profile.user.usename }}">
+        </div>
+
+        <!-- <div class="col"><h2>{{ user.username }}</h2></div> -->
+        <div class="col-sm-9">
+            <div class="col d-flex">
+                <strong class="pl-5">{{ profile.posts }} </strong> posts
+                <strong class="pl-5">{{ profile.followers }} </strong> followers
+                <strong class="pl-5">{{ profile.following }} </strong> following
+            </div>
+            
+            <div class="ml-5 pt-5 col-6">{{ profile.description }}</div>
+        </div>
+    </div>
+
+    <div class="row justify-content-around pt-5">
+        <div class="col-4 ">
+            <img class="img-fluid w-100 " src="{{ posts.images.url }}" alt="{{ posts.user.username }}">
+        </div>
+        <div class="col-4 ">
+            <img class="img-fluid w-100 " src="{{ posts.images.url }}" alt="{{ posts.user.username }}">
+        </div>
+        <div class="col-4 ">
+            <img class="img-fluid w-100 " src="{{ posts.images.url }}" alt="{{ posts.user.username }}">
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
