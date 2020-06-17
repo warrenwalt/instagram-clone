@@ -1,0 +1,12 @@
+{% extends 'user_posts/base.html' %}
+{% block content %}
+<div class="container ">
+    <div class="row justify-content-center pt-3">
+        <div class="col">
+            <div class="alert alert-success">
+                <strong class="pr-3">Log Out Successful!</strong> <small class="mutes-text"><a class="btn btn-outline-success" href="{% url 'login' %}">login?</a></small>
+            </div>
+        </div>
+    </div> 
+</div>
+{% endblock content %}

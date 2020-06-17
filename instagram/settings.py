@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "user_posts",
     "user",
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,3 +125,8 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # directory for our media
 MEDIA_URL = "/media/"  # url for accessing this media directory
+LOGIN = 'login'
+LOGIN_REDIRECT_URL = 'home' # place to redirect after succesfull login!,
+
+#crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

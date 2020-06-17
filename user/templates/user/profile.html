@@ -1,36 +1,51 @@
 {% extends 'user_posts/base.html' %}
 
 {% block content %}
-
-<div class="container px-5 py-5">
+<div class="container">
     <div class="row">
-        <div class="col-sm-3 pr-5">
-            <img class="pb-5 img-fluid rounded-circle w-sm-40" src="{{ profile.prof_pic.url }}" alt="{{ profile.user.usename }}">
+        <div class="col-4">
+            <img class="pb-5 img-fluid rounded-circle " src="{{ profile.prof_pic.url }}" alt="{{ profile.user.usename }}">
         </div>
-
-        <!-- <div class="col"><h2>{{ user.username }}</h2></div> -->
-        <div class="col-sm-9">
-            <div class="col d-flex">
-                <strong class="pl-5">{{ profile.posts }} </strong> posts
-                <strong class="pl-5">{{ profile.followers }} </strong> followers
-                <strong class="pl-5">{{ profile.following }} </strong> following
+        <div class="col-8">
+            <div class="row">
+                <div class="col"><h1>{{ user.username }}</h1></div>
             </div>
+            <div class="row justify-content-start">
+                <p class="p pr-5 mr-2"><strong>{{ profile.posts }}</strong>Posts</p>
+                <p class="p pr-5 mr-2"><strong>{{ profile.followers }}</strong>Followers</p>
+                <p class="p pr-5 mr-2"><strong>{{ profile.following }}</strong>Following</p>
+            </div>
+            <div class="row">
+                <div class="col">{{ profile.description }}</div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <!-- <div class="container px-5 py-5">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="col text-center"><h2>{{ user.username }}</h2></div>
+                <div class="col d-flex">
+                    <strong class="pl-5">{{ profile.posts }} </strong> posts
+                    <strong class="pl-5">{{ profile.followers }} </strong> followers
+                    <strong class="pl-5">{{ profile.following }} </strong> following
+                </div>
+                
+                <div class="ml-5 pt-5 col-6">{{ profile.description }}</div>
+            </div>
+        </div> -->
+        
+        <div class="row justify-content-around pt-5">
+            {% for posts in posts %}
+            <div class="col-4 ">
+                <img class="img-fluid w-100 " src="{{ posts.images.url }}" alt="{{ posts.user.username }}">
+            </div>
+            {% endfor %}
             
-            <div class="ml-5 pt-5 col-6">{{ profile.description }}</div>
         </div>
-    </div>
-
-    <div class="row justify-content-around pt-5">
-        <div class="col-4 ">
-            <img class="img-fluid w-100 " src="{{ posts.images.url }}" alt="{{ posts.user.username }}">
-        </div>
-        <div class="col-4 ">
-            <img class="img-fluid w-100 " src="{{ posts.images.url }}" alt="{{ posts.user.username }}">
-        </div>
-        <div class="col-4 ">
-            <img class="img-fluid w-100 " src="{{ posts.images.url }}" alt="{{ posts.user.username }}">
-        </div>
-    </div>
 </div>
-
-{% endblock content %}
+    
+    {% endblock content %}

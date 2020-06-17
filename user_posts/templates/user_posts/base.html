@@ -27,22 +27,20 @@
                 <a class="nav-item nav-link" href="#">D.Message</a>
                 <a class="nav-item nav-link" href="#">Explore</a>
                 <a class="nav-item nav-link" href="#">Activity</a>
-                <a class="nav-item nav-link" href="#">Login</a>
+                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                 <a class="nav-item nav-link" href="#">Register</a>
             </div>
         </div>
 
+        {% if user.is_authenticated %}
         <div class="dropdown mr-5">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                {% if user.is_authenticated %}
-                    {{ user.username }}
-                {% endif %}
-            </a>
-            <div class="dropdown-menu">
-                <a href="#" class="dropdown-item">LogOut</a>
-                <a href="#" class="dropdown-item">Profile</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }}</a>
+            <div class="dropdown-menu p-0">
+                <a href="{% url 'logout' %}"class="dropdown-item">LogOut</a>
+                <a href="{% url 'profile' user.username %}" class="dropdown-item">Profile</a>
             </div>
         </div>
+        {% endif %}
     </nav>
     {% block content %}
     {% endblock content %}
