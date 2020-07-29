@@ -1,0 +1,12 @@
+{% extends 'user_posts/base.html' %}
+
+{% block content %}
+<h1>This is page about posts</h1>
+ <h2>user {{ details.user.username }}</h2>
+<!-- <img src="{{ details.images.url }}" alt="{{ details.user.username }} post"> -->
+<strong>Posted on: {{ details.date_posted }}</strong>
+<h2>{{ details.text }}</h2>
+<p>Sponsored <strong>{{ details.sponsored }}</strong></p>
+<p>number of likes: <b>{{ details.no_of_likes }}</b></p>
+<p>number of comments: <b>{{ details.no_of_comments }}</b></p>
+{% endblock content %}

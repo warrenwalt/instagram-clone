@@ -6,7 +6,9 @@
 <div class="row mx-auto justify-content-center">
 
     <div class="card mt-5" style="width: 40rem;">
-        <img class="card-img-top" src="{{ posts.images.url }}" alt="{{ posts.user.username }}">
+        <a href="{% url 'post' posts.id %}">
+            <img class="card-img-top" src="{{ posts.images.url }}" alt="{{ posts.user.username }}">
+        </a>
         <div class="card-body">
             <div class="card-title">
                 <b class="pr-4">Like</b>
