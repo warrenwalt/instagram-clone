@@ -6,6 +6,27 @@
 <div class="row mx-auto justify-content-center">
 
     <div class="card mt-5" style="width: 40rem;">
+        <div class="row justify-content-between pl-3">
+            <div class="col-4 d-flex pt-2">
+                
+                <img src="{{ posts.user.profile.prof_pic.url }}" alt="Profile pic" class="img-fluid" style="width: 30px; height:30px; border-radius:30px;">
+                <p class='lead ml-2 pl-2' style="border-left: solid 2px darkgray;">
+                    <a href="{% url 'profile' posts.user.username %}" class="link text-dark">{{posts.user.username}}</a>
+                </p>
+            </div>
+            <div class="col d-flex justify-content-end pr-4 pt-1">
+                <strong class="h4">
+                    <div class="dropdown">
+                        <button class="badge badge-warning dropdown-toggle" type="button" id="options" data-toggle="dropdown">...</button>
+                        <div class="dropdown-menu" aria-labelledby="options">
+                            <a href="#" class="dropdown-item">Follow</a>
+                            <a href="#" class="dropdown-item">Unfollow</a>
+                            <a href="#" class="dropdown-item">Report</a>
+                        </div>
+                    </div>
+                </strong>
+            </div>
+        </div>
         <a href="{% url 'post' posts.id %}">
             <img class="card-img-top" src="{{ posts.images.url }}" alt="{{ posts.user.username }}">
         </a>

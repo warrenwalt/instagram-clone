@@ -1,12 +1,75 @@
 {% extends 'user_posts/base.html' %}
 
 {% block content %}
-<h1>This is page about posts</h1>
- <h2>user {{ details.user.username }}</h2>
-<!-- <img src="{{ details.images.url }}" alt="{{ details.user.username }} post"> -->
-<strong>Posted on: {{ details.date_posted }}</strong>
-<h2>{{ details.text }}</h2>
-<p>Sponsored <strong>{{ details.sponsored }}</strong></p>
-<p>number of likes: <b>{{ details.no_of_likes }}</b></p>
-<p>number of comments: <b>{{ details.no_of_comments }}</b></p>
+
+<div class="row px-2">
+    <div class="col-md-6">
+        <img src="{{ details.images.url }}" alt="{{ details.text }}" class="img-fluid p-0">
+    </div>
+
+    <div class="col-md-6">
+        <!-- top -->
+        <div class="row py-4">
+            <div class="col-2">
+                <a href="{% url 'profile' details.user.username %}">
+                    <img src="{{ details.user.profile.prof_pic.url }}" alt="{{ details.user.username }} profile picture" style="border-radius: 50%; width:75px; border:solid 3px palevioletred;">
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'profile' details.user.username %}">    
+                    <b class=" mx-auto h3">{{ details.user.username }}</b>
+                </a>
+                <b class="text-muted pl-3" style="border-left:solid 2px gray;">Follow</b>
+            </div>
+        </div>
+
+        <!-- Text -->
+        <div class="row px-sm-0 px-3">
+            <div class="col">
+                <h3>{{ details.text }}</h3>
+            </div>
+        </div>
+
+        <!-- info on comments -->
+        <div class="row px-2">
+            <div class="col">
+                <button class="text-muted btn" type="button">view all {{ details.no_of_comments }} comments</button>
+            </div>
+        </div>
+
+        <!-- like comment icons -->
+        <div class="row px-2">
+            <div class="col-3">
+                <a href="#" class="h3">❤</a>
+            </div>
+            <div class="col-3">
+                <a href="" class="h3">💬</a>
+            </div>
+            <div class="col-3">
+                <a href="#" class="h3">🕸</a>
+            </div>
+        </div>
+
+        <!-- no of likes -->
+        <div class="row px-2">
+            <div class="col">
+                <b>{{ details.no_of_likes }} Likes</b>
+            </div>
+        </div>
+
+        <!-- date posted -->
+        <div class="row px-2">
+            <div class="col">
+                <strong class="text-muted">{{ details.date_posted }}</strong>
+            </div>
+        </div>
+
+        <!-- add a comment -->
+        <div class="row pt-3 px-2">
+            <div class="col">
+                <p class="text-muted">Add a comment</p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
