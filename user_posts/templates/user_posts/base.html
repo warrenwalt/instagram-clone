@@ -28,7 +28,7 @@
                 <a class="nav-item nav-link" href="#">Explore</a>
                 <a class="nav-item nav-link" href="#">Activity</a>
                 <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-                <a class="nav-item nav-link" href="#">Register</a>
+                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
             </div>
         </div>
 
@@ -42,6 +42,19 @@
         </div>
         {% endif %}
     </nav>
+
+    <div class="container">
+
+    {% if messages %}
+        {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                </div>
+        {% endfor %}
+    {% endif %}
+
+    </div>
+
     {% block content %}
     {% endblock content %}
 

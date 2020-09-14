@@ -33,7 +33,9 @@
         <div class="card-body">
             <div class="card-title">
                 <b class="pr-4">Like</b>
-                <b  class="pr-4">Comment</b>
+                <a href="{% url 'comment' %}">
+                    <b  class="pr-4">Comment</b>
+                </a>
                 <b  class="pr-4">Message</b><br>
             </div>
             <p class="card-text"><strong><a href="{% url 'profile' posts.user.username %}">{{ posts.user.username }}</a></strong>{{ posts.text }}</p><br>

@@ -17,6 +17,7 @@ class Post(models.Model):
     def __str__(self):
         return f"{self.user} post"
 
+
 # posts of comment section goes here
 class Comment(models.Model):
     comment = models.TextField()
