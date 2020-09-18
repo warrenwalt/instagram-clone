@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from . models import Post
+from . models import Post, Comment
 from .form import UserRegisterForm, CommentForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -16,8 +17,10 @@ class UserListView(ListView):
 
 def PostDetailView(request, pk):
     post_detail = get_object_or_404(Post, pk=pk)
+    comments  = Comment.objects.filter(post=post_detail)
     test = request.get_signed_cookie('name', "warren", max_age=10)
-    return render(request, "user_posts/post_detail.html", {'details': post_detail, 'learn': test})
+    return render(request, "user_posts/post_detail.html", {'details': post_detail, 'learn': test, 
+    'comments': comments})
 
 
 def register(request):
@@ -32,19 +35,20 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'user_posts/register.html', {'form': form})
 
-
-def comments(request):
+@login_required
+def comments(request, pk):
+    post = Post.objects.get(pk=pk)
     if request.method == "POST":
-        # get username ot set to the form
-        poster = request.user.username
+        post.no_of_comments += 1
+        post.save()
         f = CommentForm(request.POST)
         if f.is_valid():
             f.save()
             messages.info(request, "Comment Added!")
-            return redirect('post')
+            return redirect('post', pk=pk)
         else:
             err = f.errors
             return HttpResponse(f"<h1>{err}</h1>")
     else:
-        f = CommentForm(initial={'comment': 'No SHIT Here Yet!'})
+        f = CommentForm(initial={'user': request.user, 'post': post})
     return render(request, "user_posts/comment.html", {'form': f})

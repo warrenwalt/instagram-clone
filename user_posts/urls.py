@@ -5,5 +5,5 @@ urlpatterns = [
     path('', UserListView.as_view(), name="home"),
     path('post/<int:pk>/', PostDetailView, name="post"),
     path('register/', register, name='register'),
-    path('comment/', comments, name='comment'),
+    path('comment/<int:pk>/', comments, name='comment'),
 ]

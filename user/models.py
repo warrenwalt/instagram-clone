@@ -3,9 +3,10 @@ from django.contrib.auth.models import User
 from PIL import Image
 
 # Create your models here.
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # posts = models.IntegerField()
     followers = models.IntegerField()
     following = models.IntegerField()
     description = models.TextField()

@@ -14,8 +14,9 @@ class UserRegisterForm(UserCreationForm):
 
 
 class CommentForm(forms.ModelForm):
-    user = forms.CharField(max_length=100)
+    # user = forms.CharField(max_length=100)
 
     class Meta:
         model = Comment
-        fields = ['comment']
+        fields = ['comment', 'post', 'user']
+        widgets = {'user': forms.HiddenInput(), 'post': forms.HiddenInput()}
